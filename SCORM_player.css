@@ -1,201 +1,113 @@
-/* Dark Mode Stylesheet for Emergency Preparedness Course */
+/* --- Storm Theme Custom CSS --- */
 
-/* Body and Base Styles */
+/* 1. Body & Background 
+ * Sets the main background to a very dark blue (base sky)
+ * and adds a subtle "lightning flash" animation every 10 seconds.
+ */
 body {
-    background-color: #1e1e1e !important;
-    color: #e0e0e0 !important;
+    background-color: #1a2533; /* Dark storm-cloud blue */
+    color: #ecf0f1; /* Light grey text for readability */
+    animation: lightning-flash 10s infinite;
 }
 
-/* Title Slide - Add dark overlay for better contrast */
-#title-slide {
-    position: relative;
-}
-
-#title-slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
-}
-
-#title-slide h1,
-#title-slide p,
-#title-slide button {
-    position: relative;
-    z-index: 2;
-}
-
-#title-slide h1 {
-    color: white !important;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9) !important;
-}
-
-#title-slide p {
-    color: white !important;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important;
-}
-
-/* Start Button - Maintain green accent with dark theme adjustments */
-#start-button {
-    background-color: #4CAF50 !important;
-    color: white !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5) !important;
-}
-
-#start-button:hover {
-    background-color: #45a049 !important;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.6) !important;
-}
-
-/* Activity Slide */
-#activity-slide {
-    background-color: #1e1e1e !important;
-}
-
-#activity-slide h2 {
-    color: #e0e0e0 !important;
-}
-
-/* Game Container */
-.game-container {
-    background-color: transparent;
-}
-
-/* Items Pile - Dark card */
-.items-pile {
-    background-color: #2d2d2d !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
-}
-
-.items-pile h3 {
-    color: #e0e0e0 !important;
-}
-
-/* Items Grid */
-.items-grid {
-    /* Grid layout remains the same */
-}
-
-/* Individual Items - Dark theme */
-.item {
-    background-color: #242424 !important;
-    border: 2px solid #444 !important;
-}
-
-.item:hover {
-    background-color: #2d2d2d !important;
-    border-color: #555 !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6) !important;
-}
-
-.item.dragging {
-    opacity: 0.5;
-    background-color: #1a1a1a !important;
-}
-
-.item-name {
-    color: #e0e0e0 !important;
-}
-
-/* Kit Zone - Dark card */
-.kit-zone {
-    background-color: #2d2d2d !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
-}
-
-.kit-zone h3 {
-    color: #e0e0e0 !important;
-}
-
-/* Progress Indicator */
-.progress-indicator {
-    background-color: #3a3a3a !important;
-}
-
-.progress-bar {
-    background-color: #4CAF50 !important;
-    color: white !important;
-}
-
-/* Drop Zone */
-.drop-zone {
-    border: 3px dashed #555 !important;
-    background-color: #242424 !important;
-}
-
-.drop-zone.drag-over {
-    border-color: #4CAF50 !important;
-    background-color: #2a3a2a !important;
-}
-
-.drop-zone.empty {
-    color: #888 !important;
-}
-
-.drop-zone.empty p {
-    color: #888 !important;
-}
-
-/* Kit Items (items in the drop zone) */
-.kit-item {
-    background-color: #1e3a2e !important;
-    border: 2px solid #4CAF50 !important;
-}
-
-.kit-item .item-name {
-    color: #e0e0e0 !important;
-}
-
-/* Success Message Modal */
-.success-message {
-    background-color: #2d2d2d !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7) !important;
-    border: 1px solid #444 !important;
-}
-
-.success-message h2 {
-    color: #4CAF50 !important;
-}
-
-.success-message p {
-    color: #e0e0e0 !important;
-}
-
-/* Scrollbar Styling for Dark Theme (Webkit browsers) */
-.items-pile::-webkit-scrollbar {
-    width: 10px;
-}
-
-.items-pile::-webkit-scrollbar-track {
-    background: #1e1e1e;
-}
-
-.items-pile::-webkit-scrollbar-thumb {
-    background: #555;
-    border-radius: 5px;
-}
-
-.items-pile::-webkit-scrollbar-thumb:hover {
-    background: #666;
-}
-
-/* Media Queries - Maintain responsive design */
-@media (max-width: 768px) {
-    .game-container {
-        flex-direction: column;
-        height: auto;
+/* Keyframe animation for the lightning flash */
+@keyframes lightning-flash {
+    0%, 90%, 100% {
+        background-color: #1a2533;
     }
-
-    #title-slide h1 {
-        font-size: 2em !important;
+    90.1%, 90.3%, 90.5% {
+        background-color: #5d6d7e; /* The "flash" color */
     }
-
-    .items-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    90.2%, 90.4% {
+        background-color: #1a2533;
     }
 }
 
+/* 2. Main Header Bar
+ * Styles the top bar as a dark "storm cloud" with a
+ * sharp yellow "lightning" border underneath.
+ */
+#rscp-header {
+    background-color: #2c3e50; /* Dark grey-blue */
+    border-bottom: 3px solid #f1c40f; /* Lightning yellow */
+    color: #ffffff;
+}
+
+/* 3. Course Title
+ * Makes the course title stand out in "lightning" yellow.
+ */
+#courseTitleText {
+    color: #f1c40f;
+    font-weight: bold;
+}
+
+/* 4. Progress Bar
+ * Makes the track of the progress bar dark and the
+ * fill color a bright "lightning" yellow.
+ */
+#rscp-progressbar {
+    background-color: #1a2533;
+    border: 1px solid #5d6d7e;
+}
+
+#progressImage {
+    background-color: #f1c40f; /* Lightning yellow fill */
+}
+
+#progressText {
+    color: #1a2533; /* Dark text on the yellow bar */
+    font-weight: bold;
+    text-shadow: none;
+}
+
+/* 5. Header Buttons
+ * Styles the navigation buttons to match the theme.
+ */
+#rscp-header .btn {
+    background-color: #5d6d7e; /* Muted storm grey */
+    border-color: #76d7c4; /* Electric teal accent */
+    color: #ffffff;
+}
+
+/* Hover/Focus state adds a "flash" effect */
+#rscp-header .btn:hover:not(:disabled),
+#rscp-header .btn:focus:not(:disabled) {
+    background-color: #76d7c4; /* Teal "flash" */
+    color: #1a2533;
+    border-color: #f1c40f;
+}
+
+/* Disabled buttons are faded and "rained out" */
+#rscp-header .btn:disabled {
+    background-color: #4a5568;
+    color: #a0aec0;
+    opacity: 0.6;
+}
+
+/* 6. Sidebar Menu (if visible)
+ * Styles the pop-out menu to match the dark theme.
+ */
+#rscp-sidebar {
+    background-color: #1a2533;
+    border-right: 2px solid #f1c40f;
+}
+
+#CourseMenuTitle {
+    color: #ffffff;
+    border-bottom: 1px solid #5d6d7e;
+}
+
+#rscp-sidebar .menuitem a {
+    color: #a9cce3; /* Pale "rain" blue */
+}
+
+#rscp-sidebar .menuitem a:hover {
+    color: #ffffff;
+    background-color: #2c3e50;
+}
+
+/* Highlights the active item in "lightning" yellow */
+#rscp-sidebar .menuitem .activeMenulinkDisabled {
+    color: #f1c40f;
+    font-weight: bold;
+}
