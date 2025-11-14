@@ -1,113 +1,470 @@
-/* --- Storm Theme Custom CSS --- */
-
-/* 1. Body & Background 
- * Sets the main background to a very dark blue (base sky)
- * and adds a subtle "lightning flash" animation every 10 seconds.
- */
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 body {
-    background-color: #1a2533; /* Dark storm-cloud blue */
-    color: #ecf0f1; /* Light grey text for readability */
-    animation: lightning-flash 10s infinite;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /* Move down content because we have a fixed navbar that is 60px tall */
+  padding-top: 60px;
+  background: linear-gradient(to bottom, #1a1a1a, #2d2d2d) !important;
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif;
+}
+body.hideNavBar {
+  padding-top: 0px;
+}
+body > div.container-fluid > div.row {
+  background: linear-gradient(to bottom, #1a1a1a, #2d2d2d) !important;
 }
 
-/* Keyframe animation for the lightning flash */
-@keyframes lightning-flash {
-    0%, 90%, 100% {
-        background-color: #1a2533;
-    }
-    90.1%, 90.3%, 90.5% {
-        background-color: #5d6d7e; /* The "flash" color */
-    }
-    90.2%, 90.4% {
-        background-color: #1a2533;
-    }
-}
+/* The player header */
 
-/* 2. Main Header Bar
- * Styles the top bar as a dark "storm cloud" with a
- * sharp yellow "lightning" border underneath.
- */
 #rscp-header {
-    background-color: #2c3e50; /* Dark grey-blue */
-    border-bottom: 3px solid #f1c40f; /* Lightning yellow */
-    color: #ffffff;
+  display: table;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  height: 60px;
+  width: 100%;
+  min-width: 275px;
+  background: linear-gradient(to bottom, #2c3e50, #34495e) !important;
+  border-bottom: 5px solid #ffd700 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 215, 0, 0.3);
+  padding-right: 15px;
+  padding-left: 15px;
+}
+#rscp-header-title-container {
+  width: 100%;
+  text-align: center;
+}
+.hideNavBar #rscp-header {
+  display: none;
+}
+.hideTitleBar #title {
+  display: none;
+}
+.rscp-header-row {
+  display: table-row;
+}
+.rscp-header-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+#rscp-header-logo-container {
+  padding-right: 15px;
+}
+#rscp-header-menu-container {
+  padding-left: 15px;
+  text-align: right;
+}
+#rscp-logo {
+  margin-top: 2px;
+  margin-right: 5px;
+  height: 46px;
+  width: auto;
 }
 
-/* 3. Course Title
- * Makes the course title stand out in "lightning" yellow.
- */
+/* The course title in the header bar */
 #courseTitleText {
-    color: #f1c40f;
-    font-weight: bold;
+  line-height: 28px;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.5);
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif;
 }
-
-/* 4. Progress Bar
- * Makes the track of the progress bar dark and the
- * fill color a bright "lightning" yellow.
- */
+@media (min-width: 1200px) {
+  #courseTitleText {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+@media (max-width: 700px) {
+  #courseTitleText {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #ffffff !important;
+  }
+}
+.rscp-btn-responsive {
+  padding: 8px 16px;
+  font-size: 16px;
+  line-height: 1.428571429;
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #34495e, #2c3e50) !important;
+  color: #ffffff !important;
+  border: 2px solid #ffd700 !important;
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+.rscp-btn-responsive:hover {
+  background: linear-gradient(to bottom, #ffd700, #ffed4e) !important;
+  color: #1a1a1a !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6), 0 0 15px rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+}
+.rscp-btn-responsive:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 700px) {
+  .rscp-btn-responsive {
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+}
+@media (max-width: 1440px) {
+  .showDebug .rscp-btn-responsive {
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+}
+#menu-container {
+  text-align: right;
+  white-space: nowrap;
+  padding-left: 20px;
+}
+@media (max-width: 500px) {
+  #menu-container {
+    text-align: left;
+  }
+  #rscp-header-title-container {
+    display: block;
+    white-space: nowrap;
+  }
+  #rscp-header-menu-container {
+    display: block;
+  }
+  .rscp-topMenuItem {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+}
+@media (max-width: 700px) {
+  .showDebug #menu-container {
+    text-align: left;
+  }
+  .showDebug #rscp-header-title-container {
+    display: block;
+    white-space: nowrap;
+  }
+  .showDebug #rscp-header-menu-container {
+    display: block;
+  }
+  .showDebug .rscp-topMenuItem {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+}
 #rscp-progressbar {
-    background-color: #1a2533;
-    border: 1px solid #5d6d7e;
+  display: inline-block;
+  margin-bottom: -5px;
+  width: 90px;
+  border: 2px solid #ffd700;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+#rscp-progressbar .progress-bar {
+  background: linear-gradient(to bottom, #ffd700, #ffed4e) !important;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif;
+  font-weight: 700;
+  color: #1a1a1a !important;
+}
+@media (max-width: 767px) {
+  #rscp-progressbar {
+    display: none;
+  }
+}
+@media (max-width: 1240px) {
+  .showDebug #rscp-progressbar {
+    display: none;
+  }
+}
+.rscp-topMenuItem {
+  display: none;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.enabledTopMenuItem {
+  display: inline;
+}
+.disabledTopMenuItem {
+  display: inline;
+}
+.disabledTopMenuItem:disabled {
+  opacity: 0.3;
+  background: linear-gradient(to bottom, #1a1a1a, #2d2d2d) !important;
+  border-color: #555555 !important;
+  color: #888888 !important;
+}
+.menuplaceholder {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-left: 0px;
+}
+.menuitem {
+  list-style-type: none;
+  display: table;
+  border-collapse: separate;
+  border-spacing: 3px 1px;
+  margin-left: -3px;
+}
+.menulink {
+  display: table-cell;
+  width: 100%;
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif;
+  color: #b0b0b0;
+  font-size: 14px;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+.enabledMenulink {
+  display: table-cell;
+  width: 100%;
+  color: #ffd700;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif;
+  width: inherit;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), 0 0 8px rgba(255, 215, 0, 0.5);
+  transition: color 0.3s ease;
+}
+.enabledMenulink:hover {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 215, 0, 0.8);
+}
+.disabledMenulink,
+a.disabledMenulink:hover {
+  display: table-cell;
+  width: 100%;
+  color: #666666;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+.activeMenulink,
+.activeMenulinkDisabled {
+  display: table-cell;
+  width: 100%;
+  color: #ffd700;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.sidebar-completion-unknown {
+  background-repeat: no-repeat;
+  display: table-cell;
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/completionUnknown.gif);
+}
+.sidebar-completion-incomplete {
+  background-repeat: no-repeat;
+  display: table-cell;
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/incomplete.gif);
+}
+.sidebar-completion-completed {
+  background-repeat: no-repeat;
+  display: table-cell;
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/completed.gif);
+}
+.sidebar-success-unknown {
+  background-repeat: no-repeat;
+  display: table-cell;
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/successUnknown.gif);
+}
+.sidebar-success-passed {
+  background-repeat: no-repeat;
+  display: table-cell;
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/passed.gif);
+}
+.sidebar-success-failed {
+  background-repeat: no-repeat;
+  display: table-cell;
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/failed.gif);
 }
 
-#progressImage {
-    background-color: #f1c40f; /* Lightning yellow fill */
+/* Main body background */
+#rscp-main {
+  background: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
+  padding: 0px;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
 }
 
-#progressText {
-    color: #1a2533; /* Dark text on the yellow bar */
-    font-weight: bold;
-    text-shadow: none;
+#ContentDiv iframe {
+  width: 100%;
+  margin: 0;
+  border: none;
+  display: block;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+/*
+    these start out forcing the top controls to be hidden, then based
+    on values provided in the player configuration call they get removed
+    which allows the controls to be shown, assuming other classes
+    (aka enabledTopMenuItem) are added
+*/
+.hideProgress #rscp-progressbar {
+  display: none;
+}
+.hideDebug #viewDebug {
+  display: none;
+}
+.hideDebug #returnToLmsNoDebug {
+  display: none;
+}
+.disableFlow #previous {
+  display: none;
+}
+.disableFlow #next {
+  display: none;
+}
+.hideClose #closeSco {
+  display: none;
+}
+.hideFinish #returnToLms {
+  display: none;
+}
+.hideCourseStructure #toggleMenu {
+  display: none;
+}
+.hideCourseStructure #rscp-sidebar {
+  display: none;
+}
+.hideLogo #rscp-logo {
+  display: none;
 }
 
-/* 5. Header Buttons
- * Styles the navigation buttons to match the theme.
- */
-#rscp-header .btn {
-    background-color: #5d6d7e; /* Muted storm grey */
-    border-color: #76d7c4; /* Electric teal accent */
-    color: #ffffff;
+/* Storm Theme Additional Styling */
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  background: linear-gradient(to bottom, #2c3e50, #1a1a1a) !important;
+  border: 2px solid #ffd700 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+  border-radius: 6px !important;
 }
 
-/* Hover/Focus state adds a "flash" effect */
-#rscp-header .btn:hover:not(:disabled),
-#rscp-header .btn:focus:not(:disabled) {
-    background-color: #76d7c4; /* Teal "flash" */
-    color: #1a2533;
-    border-color: #f1c40f;
+.dropdown-menu > li > a {
+  color: #ffffff !important;
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif !important;
+  font-weight: 700 !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+  padding: 10px 20px !important;
+  transition: all 0.3s ease !important;
 }
 
-/* Disabled buttons are faded and "rained out" */
-#rscp-header .btn:disabled {
-    background-color: #4a5568;
-    color: #a0aec0;
-    opacity: 0.6;
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background: linear-gradient(to bottom, #ffd700, #ffed4e) !important;
+  color: #1a1a1a !important;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5) !important;
 }
 
-/* 6. Sidebar Menu (if visible)
- * Styles the pop-out menu to match the dark theme.
- */
-#rscp-sidebar {
-    background-color: #1a2533;
-    border-right: 2px solid #f1c40f;
-}
-
+/* Course Menu Title */
 #CourseMenuTitle {
-    color: #ffffff;
-    border-bottom: 1px solid #5d6d7e;
+  color: #ffd700 !important;
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.5) !important;
+  font-size: 18px !important;
 }
 
-#rscp-sidebar .menuitem a {
-    color: #a9cce3; /* Pale "rain" blue */
+/* Privacy Policy Link */
+#rscp-privacyPolicy-link {
+  color: #ffd700 !important;
+  font-family: 'Impact', 'Arial Black', 'Franklin Gothic Bold', sans-serif !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+  transition: all 0.3s ease !important;
 }
 
-#rscp-sidebar .menuitem a:hover {
-    color: #ffffff;
-    background-color: #2c3e50;
+#rscp-privacyPolicy-link:hover {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 215, 0, 0.8) !important;
 }
 
-/* Highlights the active item in "lightning" yellow */
-#rscp-sidebar .menuitem .activeMenulinkDisabled {
-    color: #f1c40f;
-    font-weight: bold;
+/* Additional storm-themed effects */
+.btn-default {
+  background: linear-gradient(to bottom, #34495e, #2c3e50) !important;
+  color: #ffffff !important;
+  border-color: #ffd700 !important;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+  background: linear-gradient(to bottom, #ffd700, #ffed4e) !important;
+  color: #1a1a1a !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6), 0 0 15px rgba(255, 215, 0, 0.4) !important;
+}
+
+/* Sidebar styling */
+#rscp-sidebar {
+  background: linear-gradient(to bottom, #1a1a1a, #2d2d2d) !important;
+  border-right: 3px solid #ffd700 !important;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Enhanced header cell alignment */
+.rscp-header-cell:first-child {
+  width: auto;
+  min-width: 60px;
+}
+
+.rscp-header-cell:last-child {
+  width: auto;
+  text-align: right;
+}
+
+/* Storm-themed focus states */
+.rscp-btn-responsive:focus,
+.btn-default:focus {
+  outline: 3px solid #ffd700 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8) !important;
 }
